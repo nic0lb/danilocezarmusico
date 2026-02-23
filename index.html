@@ -11,6 +11,19 @@
 </head>
 <body>
 
+    <div id="overlay" class="overlay-start">
+        <div class="overlay-content">
+            <h1>Danilo Cezar</h1>
+            <p>ROCK • POP • MPB</p>
+            <button id="startBtn" class="btn">Entrar e Ouvir</button>
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="the-pretender.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+    </audio>
+
     <header>
         <div class="container navbar">
             <div class="logo">
@@ -149,10 +162,11 @@
                 <div class="contact-form-wrapper">
                     <h2>Solicite um <span>Orçamento</span></h2>
                     <form id="contactForm">
-                        <input type="text" placeholder="Seu Nome" required>
-                        <input type="email" placeholder="Seu E-mail" required>
-                        <textarea rows="5" placeholder="Fale sobre seu evento (Data, Local, Formato)" required></textarea>
+                        <input type="text" id="name" placeholder="Seu Nome" required>
+                        <input type="email" id="email" placeholder="Seu E-mail" required>
+                        <textarea id="message" rows="5" placeholder="Fale sobre seu evento (Data, Local, Formato)" required></textarea>
                         <button type="submit" class="btn">Enviar Mensagem</button>
+                        <div id="formStatus"></div>
                     </form>
                 </div>
 
