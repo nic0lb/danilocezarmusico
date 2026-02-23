@@ -3,22 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melodia Urbana - Portfólio Oficial</title>
+    <title>Danilo Cezar | Músico Profissional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
+
     <header>
-        <div class="container">
-            <h1>Melodia Urbana</h1>
-            <nav>
+        <div class="container navbar">
+            <div class="logo">
+                <h1>Danilo Cezar</h1>
+            </div>
+            
+            <button class="menu-toggle" aria-label="Abrir menu de navegação">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav id="main-nav">
                 <ul>
                     <li><a href="#inicio">Início</a></li>
-                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#formatos">Projetos</a></li>
                     <li><a href="#media">Mídia</a></li>
-                    <li><a href="#projetos">Discografia</a></li>
-                    <li><a href="#shows">Shows</a></li>
+                    <li><a href="#shows">Agenda</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
@@ -28,146 +37,150 @@
     <main>
         <section id="inicio" class="hero">
             <div class="hero-content">
-                <h2>A trilha sonora da sua vida.</h2>
-                <p>Pop-rock autêntico com a alma brasileira.</p>
-                <a href="#shows" class="btn">Próximos Shows</a>
+                <h2>Danilo Cezar</h2>
+                <p>ROCK • POP • REGGAE • MPB</p>
+                <div class="hero-btns">
+                    <a href="#shows" class="btn">Ver Agenda</a>
+                    <a href="https://wa.me/5547991431015" class="btn btn-outline" target="_blank">Contratar Show</a>
+                </div>
             </div>
         </section>
 
-        <section id="sobre" class="container">
-            <h2>Sobre a Banda</h2>
+        <section id="sobre" class="container section-padding">
             <div class="about-grid">
-                <img src="https://via.placeholder.com/400x300?text=Melodia+Urbana+Live" alt="Melodia Urbana ao vivo" class="about-img">
+                <div class="about-img-container">
+                    <img src="danilocezar.jpg" alt="Danilo Cezar" class="about-img">
+                </div>
                 <div class="about-text">
-                    <p>Formada em 2020 na vibrante cidade de São Paulo, a **Melodia Urbana** é a fusão de quatro talentos distintos: Sofia (voz e violão), Leo (guitarra), Bia (baixo) e Rafa (bateria). Nossa música é um convite à reflexão e à celebração, misturando a energia do pop-rock com a profundidade da MPB e toques de soul.</p>
-                    <p>Já nos apresentamos em diversos palcos pelo Brasil, conquistando fãs com nossa presença de palco cativante e letras que ecoam a realidade urbana. Acreditamos no poder da música para conectar pessoas e transformar o dia a dia.</p>
-                    <p>Nosso objetivo é levar nossa mensagem e melodia para o maior número de corações possível, construindo pontes através da arte.</p>
+                    <h2>Danilo <span>Cezar</span></h2>
+                    <p>Músico profissional de Joinville/SC, Danilo Cezar atua desde 2008 levando ao palco performances marcantes que unem técnica, versatilidade e forte presença musical.</p>
+                    <p>Com uma média de 5 a 7 apresentações por semana, seu trabalho se destaca pela qualidade vocal e pela capacidade de adaptar o repertório a diferentes públicos, desde bares e pubs até grandes eventos corporativos e teatros como o Juarez Machado.</p>
+                    <div class="social-quick-links">
+                        <a href="https://www.instagram.com/danilocezarmusico" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/5547991431015" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@danilocezarmusico" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="media" class="container">
-            <h2>Nossa Mídia</h2>
+        <section id="formatos" class="bg-card section-padding">
+            <div class="container">
+                <h2 class="section-title">Projetos & <span>Formatos</span></h2>
+                <div class="discography-grid">
+                    
+                    <article class="album-card">
+                        <div class="album-img">
+                            <img src="projeto-solo.jpg" alt="Voz e Violão">
+                            <div class="album-overlay"><span>Solo</span></div>
+                        </div>
+                        <h3>Voz e Violão</h3>
+                        <p>Rock, Folk, Pop e MPB. O formato versátil ideal para pubs, restaurantes e eventos intimistas.</p>
+                    </article>
 
-            <h3>Ouça Nossas Músicas</h3>
-            <div class="media-grid">
-                <div class="media-item">
-                    <h4>Liberdade (Single)</h4>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2LFx2YF8J6B8K1X5X3S7M3?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                </div>
-                <div class="media-item">
-                    <h4>Caminhos (Acústico)</h4>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4jVl2J8P6F2K7D3X8Z5F8J?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                </div>
-                <div class="media-item">
-                    <h4>Sinfonia do Asfalto (EP)</h4>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/1S1S1S1S1S1S1S1S1S1S1S?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                </div>
-            </div>
+                    <article class="album-card">
+                        <div class="album-img">
+                            <img src="projeto-duo.jpg" alt="Duo Savana">
+                            <div class="album-overlay"><span>Duo Savana</span></div>
+                        </div>
+                        <h3>Duo Savana</h3>
+                        <p>Projeto em duo com foco em rock e pop rock, trazendo releituras modernas e dinâmicas.</p>
+                    </article>
 
-            <h3>Assista Nossos Clipes e Performances</h3>
-            <div class="media-grid video-grid">
-                <div class="media-item">
-                    <h4>Melodia Urbana - Liberdade (Clipe Oficial)</h4>
-                    <iframe width="100%" height="250" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="media-item">
-                    <h4>Ao Vivo no Estúdio B (Performance)</h4>
-                    <iframe width="100%" height="250" src="https://www.youtube.com/embed/L_jWHffIx5E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </section>
+                    <article class="album-card">
+                        <div class="album-img">
+                            <img src="projeto-banda.jpg" alt="Banda Severa">
+                            <div class="album-overlay"><span>Severa</span></div>
+                        </div>
+                        <h3>Banda Severa</h3>
+                        <p>Show completo com especiais de John Mayer e Foo Fighters. Energia pura para grandes palcos.</p>
+                    </article>
 
-        <section id="projetos" class="container">
-            <h2>Nossa Discografia</h2>
-            <div class="discography-grid">
-                <div class="album-card">
-                    <img src="https://via.placeholder.com/200x200?text=Capa+Liberdade" alt="Capa do Single Liberdade">
-                    <h3>Liberdade</h3>
-                    <p>Single - Lançamento: 2024</p>
-                    <a href="https://open.spotify.com/artist/SEU_ARTISTA" target="_blank" class="btn-small">Ouvir no Spotify</a>
-                </div>
-                <div class="album-card">
-                    <img src="https://via.placeholder.com/200x200?text=Capa+Sinfonia+do+Asfalto" alt="Capa do EP Sinfonia do Asfalto">
-                    <h3>Sinfonia do Asfalto</h3>
-                    <p>EP - Lançamento: 2023</p>
-                    <a href="https://open.spotify.com/artist/SEU_ARTISTA" target="_blank" class="btn-small">Ouvir no Spotify</a>
-                </div>
-                <div class="album-card">
-                    <img src="https://via.placeholder.com/200x200?text=Capa+Raízes+Urbanas" alt="Capa do Álbum Raízes Urbanas">
-                    <h3>Raízes Urbanas</h3>
-                    <p>Álbum - Lançamento: 2022</p>
-                    <a href="https://open.spotify.com/artist/SEU_ARTISTA" target="_blank" class="btn-small">Ouvir no Spotify</a>
+                    <article class="album-card">
+                        <div class="album-img">
+                            <img src="projeto-c47.jpg" alt="Banda C47">
+                            <div class="album-overlay"><span>C47</span></div>
+                        </div>
+                        <h3>Banda C47</h3>
+                        <p>Projeto autoral que apresenta a identidade musical própria e composições originais.</p>
+                    </article>
+
                 </div>
             </div>
         </section>
 
-        <section id="shows" class="container">
-            <h2>Próximos Shows</h2>
-            <div class="shows-list">
-                <div class="show-item">
-                    <h3>Festival da Primavera</h3>
-                    <p><strong>Data:</strong> 15 de Julho de 2025</p>
-                    <p><strong>Local:</strong> Parque Ibirapuera, São Paulo - SP</p>
-                    <p><strong>Horário:</strong> 20:00h</p>
-                    <a href="#" target="_blank" class="btn-small">Comprar Ingressos</a>
+        <section id="media" class="container section-padding">
+            <h2 class="section-title">Mídia & <span>Vídeos</span></h2>
+            <div class="video-grid">
+                <div class="video-item">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class="show-item">
-                    <h3>Sunset Acústico</h3>
-                    <p><strong>Data:</strong> 03 de Agosto de 2025</p>
-                    <p><strong>Local:</strong> Bar do Zé, Rio de Janeiro - RJ</p>
-                    <p><strong>Horário:</strong> 19:30h</p>
-                    <a href="#" target="_blank" class="btn-small">Saiba Mais</a>
-                </div>
-                <div class="show-item">
-                    <h3>Tour Nordeste: Salvador</h3>
-                    <p><strong>Data:</strong> 22 de Setembro de 2025</p>
-                    <p><strong>Local:</strong> Concha Acústica, Salvador - BA</p>
-                    <p><strong>Horário:</strong> 21:00h</p>
-                    <a href="#" target="_blank" class="btn-small">Comprar Ingressos</a>
+                <div class="video-item">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
 
-        <section id="contato" class="container">
-            <h2>Entre em Contato</h2>
-            <p>Queremos saber de você! Para shows, parcerias ou outras informações, preencha o formulário abaixo ou nos mande um e-mail.</p>
+        <section id="shows" class="bg-dark section-padding">
+            <div class="container">
+                <div class="instagram-cta">
+                    <h2 class="section-title">Agenda <span>Semanal</span></h2>
+                    <p>Acompanhe os locais e horários das apresentações nos destaques do Instagram. Agenda atualizada toda semana!</p>
+                    
+                    <div class="insta-box">
+                        <i class="fab fa-instagram"></i>
+                        <span>@danilocezarmusico</span>
+                    </div>
+                    
+                    <a href="https://www.instagram.com/danilocezarmusico" target="_blank" class="btn">Ver Agenda no Instagram</a>
+                    
+                    <div class="booking-info">
+                        <p>DISPONÍVEL PARA JOINVILLE E REGIÃO</p>
+                        <a href="https://wa.me/5547991431015" target="_blank" class="whatsapp-link">
+                            <i class="fab fa-whatsapp"></i> (47) 99143-1015
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <form id="contactForm">
-                <div class="form-group">
-                    <label for="name">Nome:</label>
-                    <input type="text" id="name" name="name" required>
-                    <div class="error-message" id="nameError"></div>
+        <section id="contato" class="container section-padding">
+            <div class="contact-grid">
+                <div class="contact-form-wrapper">
+                    <h2>Solicite um <span>Orçamento</span></h2>
+                    <form id="contactForm">
+                        <input type="text" placeholder="Seu Nome" required>
+                        <input type="email" placeholder="Seu E-mail" required>
+                        <textarea rows="5" placeholder="Fale sobre seu evento (Data, Local, Formato)" required></textarea>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" required>
-                    <div class="error-message" id="emailError"></div>
-                </div>
-                <div class="form-group">
-                    <label for="message">Mensagem:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                    <div class="error-message" id="messageError"></div>
-                </div>
-                <button type="submit" class="btn">Enviar Mensagem</button>
-                <div id="formStatus" class="form-status"></div>
-            </form>
 
-            <div class="social-media">
-                <h3>Siga a Melodia Urbana</h3>
-                <a href="https://www.instagram.com/seubanda" target="_blank" class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/768px-Instagram_logo_2016.svg.png" alt="Instagram"></a>
-                <a href="https://www.facebook.com/seubanda" target="_blank" class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Facebook_icon_%282019%29.svg/800px-Facebook_icon_%282019%29.svg.png" alt="Facebook"></a>
-                <a href="https://open.spotify.com/artist/SEU_ARTISTA" target="_blank" class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/768px-Spotify_logo_without_text.svg.png" alt="Spotify"></a>
-                <a href="https://www.youtube.com/channel/SEU_CANAL" target="_blank" class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/768px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube"></a>
+                <div class="contact-socials">
+                    <h3>Experiência & Palcos</h3>
+                    <p>• Teatro Juarez Machado<br>
+                       • Yello Stage / Farm Hill<br>
+                       • Abertura Nacional Oficina G3<br>
+                       • Eventos Corporativos e Sociais</p>
+                    <div class="social-icons-large" style="margin-top: 30px;">
+                        <a href="https://www.instagram.com/danilocezarmusico" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/5547991431015" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Melodia Urbana. Todos os direitos reservados.</p>
+            <p>© 2026 Danilo Cezar. Todos os direitos reservados. | Joinville - SC</p>
         </div>
     </footer>
+
+    <a href="https://wa.me/5547991431015" class="whatsapp-fixed" target="_blank" aria-label="Chamar no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip-wpp">Contrate o Show</span>
+    </a>
 
     <script src="script.js"></script>
 </body>
