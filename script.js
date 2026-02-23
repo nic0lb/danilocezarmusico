@@ -2,7 +2,31 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // --- 1. Navegação Suave (Smooth Scroll) ---
+    // --- 1. Controle da Tela de Entrada e Música (Autoplay) ---
+    const startBtn = document.getElementById('startBtn');
+    const overlay = document.getElementById('overlay');
+    const bgMusic = document.getElementById('bgMusic');
+
+    if (startBtn && overlay) {
+        startBtn.addEventListener('click', function() {
+            // Toca a música assim que o usuário clica para entrar
+            if (bgMusic) {
+                bgMusic.play().catch(error => {
+                    console.log("O navegador bloqueou o áudio: ", error);
+                });
+            }
+            
+            // Efeito de sumir a tela de entrada
+            overlay.classList.add('fade-out');
+            
+            // Remove do site para não atrapalhar cliques futuros
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 800);
+        });
+    }
+
+    // --- 2. Navegação Suave (Smooth Scroll) ---
     document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -10,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.querySelector(targetId);
 
             if (targetElement) {
-                // Compensação para o header fixo (ajuste de 80px)
                 const headerOffset = 80;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -21,17 +44,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
 
-            // Fecha o menu mobile ao clicar
+            // Fecha o menu mobile ao clicar em um link
             const mainNav = document.getElementById('main-nav');
             const menuToggle = document.querySelector('.menu-toggle');
-            if (mainNav.classList.contains('active')) {
+            if (mainNav && mainNav.classList.contains('active')) {
                 mainNav.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
+                if (menuToggle) {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.replace('fa-times', 'fa-bars');
+                }
             }
         });
     });
 
-    // --- 2. Menu Hambúrguer & Acessibilidade ---
+    // --- 3. Menu Hambúrguer ---
     const menuToggle = document.querySelector('.menu-toggle');
     const mainNav = document.getElementById('main-nav');
 
@@ -40,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const isExpanded = mainNav.classList.toggle('active');
             menuToggle.setAttribute('aria-expanded', isExpanded);
             
-            // Troca o ícone de bars para times (X) se quiser um feedback visual
             const icon = menuToggle.querySelector('i');
             if (isExpanded) {
                 icon.classList.replace('fa-bars', 'fa-times');
@@ -50,8 +76,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- 3. Efeito Reveal ao Rolar (Scroll Animation) ---
-    const revealElements = document.querySelectorAll('.about-grid, .album-card, .show-item, .contact-grid');
+    // --- 4. Efeito Reveal ao Rolar (Scroll Animation) ---
+    // Adicionei os .album-card para que eles apareçam conforme você desce
+    const revealElements = document.querySelectorAll('.about-grid, .album-card, .video-item, .contact-grid');
     
     const revealOnScroll = () => {
         const triggerBottom = window.innerHeight * 0.85;
@@ -65,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
-    // Configuração inicial para o efeito de entrada
+    // Configuração inicial invisível
     revealElements.forEach(el => {
         el.style.opacity = "0";
         el.style.transform = "translateY(30px)";
@@ -73,9 +100,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Dispara uma vez para o que já estiver na tela
+    revealOnScroll();
 
-    // --- 4. Validação do Formulário de Contato ---
+    // --- 5. Validação do Formulário de Contato ---
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
 
@@ -83,40 +110,20 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const formData = {
-                name: document.getElementById('name').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                message: document.getElementById('message').value.trim()
-            };
-
-            if (formData.name === "" || formData.email === "" || formData.message.length < 10) {
-                showStatus('Por favor, preencha todos os campos corretamente.', 'error');
-                return;
-            }
-
-            // Simulação de envio (Efeito de Loading)
             const submitBtn = contactForm.querySelector('button');
             const originalText = submitBtn.textContent;
+            
+            // Simulação de envio
             submitBtn.textContent = 'ENVIANDO...';
             submitBtn.disabled = true;
 
             setTimeout(() => {
-                showStatus('Mensagem enviada com sucesso! Logo entraremos em contato.', 'success');
+                // Aqui você pode integrar com algum serviço de e-mail no futuro
+                alert('Mensagem enviada com sucesso! Danilo Cezar entrará em contato em breve.');
                 contactForm.reset();
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             }, 2000);
         });
-    }
-
-    function showStatus(msg, type) {
-        formStatus.textContent = msg;
-        formStatus.className = `form-status ${type}`; // Aplica as cores do CSS
-        formStatus.style.display = 'block';
-        formStatus.style.marginTop = '20px';
-        
-        if (type === 'success') {
-            setTimeout(() => { formStatus.style.display = 'none'; }, 5000);
-        }
     }
 });
