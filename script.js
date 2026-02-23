@@ -1,113 +1,122 @@
-// script.js
+// script.js - Danilo Cezar [Edição Dark & Premium]
 
 document.addEventListener('DOMContentLoaded', function() {
-    // --- 1. Smooth Scrolling (Navegação Suave) ---
-    // Faz a página rolar suavemente para a seção clicada no menu.
+    
+    // --- 1. Navegação Suave (Smooth Scroll) ---
     document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault(); // Previne o comportamento padrão do link (pular para a âncora)
-
-            // Obtém o ID da seção do atributo 'href' do link (ex: '#sobre')
+            e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
 
             if (targetElement) {
-                // Rola para o elemento com um comportamento suave
-                targetElement.scrollIntoView({
+                // Compensação para o header fixo (ajuste de 80px)
+                const headerOffset = 80;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
                     behavior: 'smooth'
                 });
+            }
+
+            // Fecha o menu mobile ao clicar
+            const mainNav = document.getElementById('main-nav');
+            const menuToggle = document.querySelector('.menu-toggle');
+            if (mainNav.classList.contains('active')) {
+                mainNav.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
             }
         });
     });
 
-    // --- 2. Validação Básica do Formulário de Contato ---
-    const contactForm = document.getElementById('contactForm');
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const messageInput = document.getElementById('message');
-    const formStatus = document.getElementById('formStatus');
+    // --- 2. Menu Hambúrguer & Acessibilidade ---
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.getElementById('main-nav');
 
-    contactForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Previne o envio padrão do formulário
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', function() {
+            const isExpanded = mainNav.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', isExpanded);
+            
+            // Troca o ícone de bars para times (X) se quiser um feedback visual
+            const icon = menuToggle.querySelector('i');
+            if (isExpanded) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        });
+    }
 
-        // Limpa mensagens de erro anteriores
-        clearErrors();
+    // --- 3. Efeito Reveal ao Rolar (Scroll Animation) ---
+    const revealElements = document.querySelectorAll('.about-grid, .album-card, .show-item, .contact-grid');
+    
+    const revealOnScroll = () => {
+        const triggerBottom = window.innerHeight * 0.85;
 
-        let isValid = true;
+        revealElements.forEach(el => {
+            const elTop = el.getBoundingClientRect().top;
+            if (elTop < triggerBottom) {
+                el.style.opacity = "1";
+                el.style.transform = "translateY(0)";
+            }
+        });
+    };
 
-        // Validação do Nome
-        if (nameInput.value.trim() === '') {
-            displayError('nameError', 'Por favor, digite seu nome.');
-            isValid = false;
-        }
-
-        // Validação do E-mail
-        if (emailInput.value.trim() === '') {
-            displayError('emailError', 'Por favor, digite seu e-mail.');
-            isValid = false;
-        } else if (!isValidEmail(emailInput.value.trim())) {
-            displayError('emailError', 'Por favor, digite um e-mail válido.');
-            isValid = false;
-        }
-
-        // Validação da Mensagem
-        if (messageInput.value.trim() === '') {
-            displayError('messageError', 'Por favor, digite sua mensagem.');
-            isValid = false;
-        } else if (messageInput.value.trim().length < 10) {
-            displayError('messageError', 'A mensagem deve ter pelo menos 10 caracteres.');
-            isValid = false;
-        }
-
-        if (isValid) {
-            // Se o formulário é válido, simula um envio e exibe mensagem de sucesso
-            formStatus.classList.remove('error');
-            formStatus.classList.add('success');
-            formStatus.textContent = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
-            formStatus.style.display = 'block';
-
-            // Resetar o formulário após 3 segundos
-            setTimeout(() => {
-                contactForm.reset();
-                formStatus.style.display = 'none';
-                formStatus.textContent = '';
-            }, 3000);
-
-            // Em um cenário real, você enviaria os dados para um backend aqui
-            console.log('Formulário enviado:', {
-                name: nameInput.value,
-                email: emailInput.value,
-                message: messageInput.value
-            });
-
-        } else {
-            // Se o formulário não é válido, exibe mensagem de erro geral
-            formStatus.classList.remove('success');
-            formStatus.classList.add('error');
-            formStatus.textContent = 'Por favor, corrija os erros no formulário.';
-            formStatus.style.display = 'block';
-        }
+    // Configuração inicial para o efeito de entrada
+    revealElements.forEach(el => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(30px)";
+        el.style.transition = "all 0.8s ease-out";
     });
 
-    function displayError(id, message) {
-        const errorElement = document.getElementById(id);
-        if (errorElement) {
-            errorElement.textContent = message;
-            errorElement.style.display = 'block';
-        }
-    }
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll(); // Dispara uma vez para o que já estiver na tela
 
-    function clearErrors() {
-        document.querySelectorAll('.error-message').forEach(element => {
-            element.textContent = '';
-            element.style.display = 'none';
+    // --- 4. Validação do Formulário de Contato ---
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                message: document.getElementById('message').value.trim()
+            };
+
+            if (formData.name === "" || formData.email === "" || formData.message.length < 10) {
+                showStatus('Por favor, preencha todos os campos corretamente.', 'error');
+                return;
+            }
+
+            // Simulação de envio (Efeito de Loading)
+            const submitBtn = contactForm.querySelector('button');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'ENVIANDO...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                showStatus('Mensagem enviada com sucesso! Logo entraremos em contato.', 'success');
+                contactForm.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
         });
-        formStatus.style.display = 'none';
     }
 
-    function isValidEmail(email) {
-        // Expressão regular simples para validação de e-mail
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
+    function showStatus(msg, type) {
+        formStatus.textContent = msg;
+        formStatus.className = `form-status ${type}`; // Aplica as cores do CSS
+        formStatus.style.display = 'block';
+        formStatus.style.marginTop = '20px';
+        
+        if (type === 'success') {
+            setTimeout(() => { formStatus.style.display = 'none'; }, 5000);
+        }
     }
 });
