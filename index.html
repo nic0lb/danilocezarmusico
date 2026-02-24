@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="estilo.css">
     
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
@@ -18,7 +18,7 @@
         <div class="overlay-content">
             <h1>Danilo Cezar</h1>
             <p>ROCK • POP • REGGAE • MPB</p>
-            <button id="startBtn" class="btn">Entrar</button>
+            <button id="startBtn" class="btn">Entrar e Ouvir</button>
         </div>
     </div>
 
@@ -35,6 +35,153 @@
             
             <button class="menu-toggle" aria-label="Abrir menu de navegação">
                 <i class="fas fa-bars"></i>
+            </button>
+
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#formatos">Projetos</a></li>
+                    <li><a href="#media">Mídia</a></li>
+                    <li><a href="#shows">Agenda</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h2>Danilo Cezar</h2>
+                <p>ROCK • POP • REGGAE • MPB</p>
+                <div class="hero-btns">
+                    <a href="#shows" class="btn">Ver Agenda</a>
+                    <a href="https://wa.me/5547991431015" class="btn btn-outline" target="_blank">Contratar Show</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="container section-padding">
+            <div class="about-grid">
+                <div class="about-img-container">
+                    <img src="danilocezar.jpg" alt="Danilo Cezar" class="about-img">
+                </div>
+                <div class="about-text">
+                    <h2>Danilo <span>Cezar</span></h2>
+                    <p>Músico profissional de Joinville/SC, Danilo Cezar atua desde 2008 levando ao palco performances marcantes que unem técnica, versatilidade e forte presença musical.</p>
+                    <p>Com uma média de 5 a 7 apresentações por semana, seu trabalho se destaca pela qualidade vocal e pela capacidade de adaptar o repertório a diferentes públicos.</p>
+                    <div class="social-quick-links">
+                        <a href="https://www.instagram.com/danilocezarmusico" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/danil0cezar/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/5547991431015" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@danilocezarmusico" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="formatos" class="bg-card section-padding">
+            <div class="container">
+                <h2 class="section-title">Projetos & <span>Formatos</span></h2>
+                <div class="discography-grid">
+                    <article class="album-card">
+                        <div class="album-img">
+                            <img src="projeto-solo.jpg" alt="Voz e Violão">
+                            <div class="album-overlay"><span>Solo</span></div>
+                        </div>
+                        <h3>Voz e Violão</h3>
+                        <p>Rock, Folk, Pop e MPB para pubs e eventos intimistas.</p>
+                    </article>
+                    <article class="album-card">
+                        <div class="album-img">
+                            <img src="projeto-duo.jpg" alt="Duo Savana">
+                            <div class="album-overlay"><span>Duo Savana</span></div>
+                        </div>
+                        <h3>Duo Savana</h3>
+                        <p>Releituras modernas com foco em Rock e Pop Rock.</p>
+                    </article>
+                    <article class="album-card">
+                        <div class="album-img">
+                            <img src="projeto-banda.jpg" alt="Banda Severa">
+                            <div class="album-overlay"><span>Severa</span></div>
+                        </div>
+                        <h3>Banda Severa</h3>
+                        <p>Show completo com especiais de John Mayer e Foo Fighters.</p>
+                    </article>
+                    <article class="album-card">
+                        <div class="album-img">
+                            <img src="projeto-c47.jpg" alt="Banda C47">
+                            <div class="album-overlay"><span>C47</span></div>
+                        </div>
+                        <h3>Banda C47</h3>
+                        <p>Projeto autoral com identidade musical própria.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="media" class="container section-padding">
+            <h2 class="section-title">Mídia & <span>Vídeos</span></h2>
+            <div class="video-grid">
+                <div class="video-item">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/BFyvY1rhAqM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/LMpsERscVgc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="shows" class="bg-dark section-padding">
+            <div class="container">
+                <div class="instagram-cta">
+                    <h2 class="section-title">Agenda <span>Semanal</span></h2>
+                    <p>Acompanhe a agenda atualizada toda semana no Instagram!</p>
+                    <div class="insta-box">
+                        <i class="fab fa-instagram"></i>
+                        <span>@danilocezarmusico</span>
+                    </div>
+                    <a href="https://www.instagram.com/danilocezarmusico" target="_blank" class="btn">Ver no Instagram</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="container section-padding">
+            <div class="contact-grid">
+                <div class="contact-form-wrapper">
+                    <h2>Solicite um <span>Orçamento</span></h2>
+                    <form id="contactForm">
+                        <input type="text" id="name" placeholder="Seu Nome" required>
+                        <input type="email" id="email" placeholder="Seu E-mail" required>
+                        <textarea id="message" rows="5" placeholder="Fale sobre seu evento" required></textarea>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+                <div class="contact-socials">
+                    <h3>Experiência & Palcos</h3>
+                    <p>• Teatro Juarez Machado<br>
+                       • Yello Stage / Farm Hill<br>
+                       • Abertura Nacional - Oficina G3</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Danilo Cezar. Todos os direitos reservados. | Joinville - SC</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5547991431015" class="whatsapp-fixed" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip-wpp">Contrate o Show</span>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+                        </html>                <i class="fas fa-bars"></i>
             </button>
 
             <nav id="main-nav">
@@ -186,6 +333,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
