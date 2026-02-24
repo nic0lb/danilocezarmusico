@@ -2,24 +2,29 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // --- 1. Controle da Tela de Entrada e Música (Autoplay) ---
+    // --- 1. Controle da Tela de Entrada e Música (Autoplay Blindado) ---
     const startBtn = document.getElementById('startBtn');
     const overlay = document.getElementById('overlay');
     const bgMusic = document.getElementById('bgMusic');
 
+    // Função para tocar a música com segurança
+    function playAudio() {
+        if (bgMusic) {
+            bgMusic.volume = 1.0; // Garante que não está mudo no código
+            bgMusic.play()
+                .then(() => console.log("Áudio iniciado com sucesso!"))
+                .catch(error => console.error("Falha ao tocar áudio:", error));
+        }
+    }
+
     if (startBtn && overlay) {
-        startBtn.addEventListener('click', function() {
-            // Toca a música assim que o usuário clica para entrar
-            if (bgMusic) {
-                bgMusic.play().catch(error => {
-                    console.log("O navegador bloqueou o áudio: ", error);
-                });
-            }
+        startBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Impede conflitos de clique
+            console.log("Botão de entrada clicado.");
             
-            // Efeito de sumir a tela de entrada
+            playAudio();
+            
             overlay.classList.add('fade-out');
-            
-            // Remove do site para não atrapalhar cliques futuros
             setTimeout(() => {
                 overlay.style.display = 'none';
             }, 800);
@@ -44,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
 
-            // Fecha o menu mobile ao clicar em um link
             const mainNav = document.getElementById('main-nav');
             const menuToggle = document.querySelector('.menu-toggle');
             if (mainNav && mainNav.classList.contains('active')) {
@@ -76,13 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- 4. Efeito Reveal ao Rolar (Scroll Animation) ---
-    // Adicionei os .album-card para que eles apareçam conforme você desce
+    // --- 4. Efeito Reveal ao Rolar ---
     const revealElements = document.querySelectorAll('.about-grid, .album-card, .video-item, .contact-grid');
     
     const revealOnScroll = () => {
         const triggerBottom = window.innerHeight * 0.85;
-
         revealElements.forEach(el => {
             const elTop = el.getBoundingClientRect().top;
             if (elTop < triggerBottom) {
@@ -92,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
-    // Configuração inicial invisível
     revealElements.forEach(el => {
         el.style.opacity = "0";
         el.style.transform = "translateY(30px)";
@@ -102,24 +103,19 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
 
-    // --- 5. Validação do Formulário de Contato ---
+    // --- 5. Validação do Formulário ---
     const contactForm = document.getElementById('contactForm');
-    const formStatus = document.getElementById('formStatus');
-
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
             const submitBtn = contactForm.querySelector('button');
             const originalText = submitBtn.textContent;
             
-            // Simulação de envio
             submitBtn.textContent = 'ENVIANDO...';
             submitBtn.disabled = true;
 
             setTimeout(() => {
-                // Aqui você pode integrar com algum serviço de e-mail no futuro
-                alert('Mensagem enviada com sucesso! Danilo Cezar entrará em contato em breve.');
+                alert('Mensagem enviada com sucesso!');
                 contactForm.reset();
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
