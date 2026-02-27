@@ -100,21 +100,28 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
 
-});
+    // --- 5. Lógica de Envio para WhatsApp (Substituindo o envio de e-mail) ---
+    const whatsappForm = document.getElementById('whatsappForm');
+    
+    if (whatsappForm) {
+        whatsappForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Impede o recarregamento da página
 
-// --- 5. NOVA FUNÇÃO DE WHATSAPP (Substituindo o envio de e-mail) ---
-function enviarParaWhatsApp() {
-    const nome = document.getElementById('nome_cliente').value;
-    const mensagem = document.getElementById('mensagem_corpo').value;
-    const telefone = "5547991431015"; 
+            const nome = document.getElementById('nome_cliente').value;
+            const mensagem = document.getElementById('mensagem_corpo').value;
+            const telefone = "5547991431015"; 
 
-    if (nome.trim() === "" || mensagem.trim() === "") {
-        alert("Por favor, preencha o seu nome e os detalhes do evento.");
-        return;
+            if (nome.trim() === "" || mensagem.trim() === "") {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            // Formata a mensagem para o WhatsApp
+            const texto = `Olá Danilo! Me chamo *${nome}*.%0A%0A*Sobre o evento:*%0A${mensagem}`;
+            const url = `https://wa.me/${telefone}?text=${texto}`;
+
+            // Abre o link do WhatsApp
+            window.open(url, '_blank');
+        });
     }
-
-    const texto = `Olá Danilo! Me chamo *${nome}*.%0A%0A*Sobre o evento:*%0A${mensagem}`;
-    const link = `https://wa.me/${telefone}?text=${texto}`;
-
-    window.open(link, '_blank');
-                    }
+});
