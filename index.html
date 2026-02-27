@@ -93,7 +93,6 @@
                         <h3>Voz e Violão</h3>
                         <p>Rock, Folk, Pop e MPB para pubs e eventos intimistas.</p>
                     </article>
-
                     <article class="album-card">
                         <div class="album-img">
                             <img src="projeto-duo.jpg" alt="Duo Savana">
@@ -102,7 +101,6 @@
                         <h3>Duo Savana</h3>
                         <p>Releituras modernas com foco em Rock e Pop Rock.</p>
                     </article>
-
                     <article class="album-card">
                         <div class="album-img">
                             <img src="projeto-banda.jpg" alt="Banda Severa">
@@ -111,7 +109,6 @@
                         <h3>Banda Severa</h3>
                         <p>Show completo com especiais de John Mayer e Foo Fighters.</p>
                     </article>
-
                     <article class="album-card">
                         <div class="album-img">
                             <img src="projeto-c47.jpg" alt="Banda C47">
@@ -130,11 +127,9 @@
                 <div class="video-item">
                     <iframe src="https://www.instagram.com/reel/DRVCNoEkcf3/embed" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
                 </div>
-
                 <div class="video-item">
                     <iframe src="https://www.instagram.com/reel/DKmi1hUMvv-/embed" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
                 </div>
-
                 <div class="video-item">
                     <iframe src="https://www.instagram.com/reel/DJILPsXPM-x/embed" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
                 </div>
@@ -159,15 +154,14 @@
             <div class="contact-grid">
                 <div class="contact-form-wrapper">
                     <h2>Solicite um <span>Orçamento</span></h2>
-                    <form id="contactForm">
-                        <input type="text" id="name" placeholder="Seu Nome" required>
-                        <input type="email" id="email" placeholder="Seu E-mail" required>
-                        <textarea id="message" rows="5" placeholder="Fale sobre seu evento" required></textarea>
-                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    <form id="whatsappForm">
+                        <input type="text" id="nome_cliente" placeholder="Seu Nome" required>
+                        <textarea id="mensagem_corpo" rows="5" placeholder="Fale sobre seu evento (Data, local, tipo de evento...)" required></textarea>
+                        <button type="button" onclick="enviarParaWhatsApp()" class="btn">
+                            <i class="fab fa-whatsapp"></i> Enviar via WhatsApp
+                        </button>
                     </form>
-                    <div id="formStatus"></div>
                 </div>
-
                 <div class="contact-socials">
                     <h3>Experiência & Palcos</h3>
                     <p>• Teatro Juarez Machado<br>
@@ -191,4 +185,4 @@
 
     <script src="script.js"></script>
 </body>
-                        </html>
+                                         </html>
