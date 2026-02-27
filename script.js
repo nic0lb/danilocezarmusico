@@ -1,4 +1,4 @@
-// script.js - Danilo Cezar [Edição Dark & Premium]
+// script.js - Danilo Cezar [Edição Dark & Premium] - ATUALIZADO
 
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -7,10 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.getElementById('overlay');
     const bgMusic = document.getElementById('bgMusic');
 
-    // Função para tocar a música com segurança
     function playAudio() {
         if (bgMusic) {
-            bgMusic.volume = 1.0; // Garante que não está mudo no código
+            bgMusic.volume = 1.0;
             bgMusic.play()
                 .then(() => console.log("Áudio iniciado com sucesso!"))
                 .catch(error => console.error("Falha ao tocar áudio:", error));
@@ -19,11 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (startBtn && overlay) {
         startBtn.addEventListener('click', function(e) {
-            e.stopPropagation(); // Impede conflitos de clique
+            e.stopPropagation();
             console.log("Botão de entrada clicado.");
-            
             playAudio();
-            
             overlay.classList.add('fade-out');
             setTimeout(() => {
                 overlay.style.display = 'none';
@@ -103,23 +100,21 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
 
-    // --- 5. Validação do Formulário ---
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const submitBtn = contactForm.querySelector('button');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = 'ENVIANDO...';
-            submitBtn.disabled = true;
-
-            setTimeout(() => {
-                alert('Mensagem enviada com sucesso!');
-                contactForm.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
-        });
-    }
 });
+
+// --- 5. NOVA FUNÇÃO DE WHATSAPP (Substituindo o envio de e-mail) ---
+function enviarParaWhatsApp() {
+    const nome = document.getElementById('nome_cliente').value;
+    const mensagem = document.getElementById('mensagem_corpo').value;
+    const telefone = "5547991431015"; 
+
+    if (nome.trim() === "" || mensagem.trim() === "") {
+        alert("Por favor, preencha o seu nome e os detalhes do evento.");
+        return;
+    }
+
+    const texto = `Olá Danilo! Me chamo *${nome}*.%0A%0A*Sobre o evento:*%0A${mensagem}`;
+    const link = `https://wa.me/${telefone}?text=${texto}`;
+
+    window.open(link, '_blank');
+                    }
