@@ -125,3 +125,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+function enviarParaWhatsApp() {
+    const nome = document.getElementById('nome_cliente').value;
+    const mensagem = document.getElementById('mensagem_corpo').value;
+    const telefone = "5547991431015"; 
+
+    if (nome.trim() === "" || mensagem.trim() === "") {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
+
+    const texto = `Olá Danilo! Me chamo *${nome}*.%0A%0A*Sobre o evento:*%0A${mensagem}`;
+    const url = `https://wa.me/${telefone}?text=${texto}`;
+    window.open(url, '_blank');
+}
